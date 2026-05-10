@@ -1,0 +1,284 @@
+:root {
+  --bg: #0e1116;
+  --surface: #161b22;
+  --surface-2: #1c222b;
+  --text: #e6edf3;
+  --muted: #8b949e;
+  --accent: #58a6ff;
+  --accent-hover: #79b8ff;
+  --border: #30363d;
+  --border-bright: #444c56;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, "Segoe UI", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: var(--accent-hover); text-decoration: underline; }
+
+/* ---- Top navigation (shared across all pages) ---- */
+
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(14, 17, 22, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  padding: 0.85rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.nav-brand {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text);
+  letter-spacing: 0.01em;
+}
+.nav-brand:hover { color: var(--accent); text-decoration: none; }
+
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1.5rem;
+}
+.nav-links a {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.nav-links a:hover { color: var(--accent); }
+
+/* ---- Page main container ---- */
+
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+main.wide { max-width: 1000px; }
+
+/* ---- Studio homepage hero (index.html only) ---- */
+
+.studio-hero {
+  text-align: center;
+  padding: 5rem 1.5rem 3rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.studio-hero h1 {
+  font-size: 3rem;
+  margin: 0.5rem 0;
+  letter-spacing: -0.02em;
+}
+
+.studio-hero .tagline {
+  color: var(--muted);
+  font-size: 1.25rem;
+  margin: 0.5rem 0 0;
+}
+
+/* ---- Press / about / game-page hero (subpages) ---- */
+
+.hero {
+  text-align: center;
+  padding: 4rem 1.5rem 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.hero .logo {
+  max-width: 200px;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.hero h1 {
+  margin: 0.5rem 0;
+  font-size: 2.5rem;
+}
+
+.tagline {
+  color: var(--muted);
+  font-size: 1.15rem;
+  margin: 0;
+}
+
+/* ---- Sections ---- */
+
+section {
+  margin: 3rem 0;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+section:last-of-type { border-bottom: none; }
+
+h2 {
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+h3 {
+  color: var(--muted);
+  font-weight: 500;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 2rem;
+}
+
+p { margin: 0.6em 0; }
+
+ul, ol { padding-left: 1.4em; }
+ul li { margin: 0.3em 0; }
+
+/* ---- Tables (factsheet, etc.) ---- */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th, table td {
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+table th {
+  color: var(--muted);
+  font-weight: 500;
+  width: 30%;
+}
+
+/* ---- Game card (used on home + games index) ---- */
+
+.game-card {
+  display: block;
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin: 1rem 0;
+  text-decoration: none;
+  color: var(--text);
+  transition: border-color 0.15s, transform 0.15s;
+}
+.game-card:hover {
+  border-color: var(--accent);
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+.game-card h3 {
+  color: var(--accent);
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 600;
+  font-size: 1.3rem;
+  margin: 0 0 0.4rem;
+}
+.game-card p {
+  color: var(--muted);
+  margin: 0;
+}
+
+/* ---- Quick-links row (homepage CTA buttons) ---- */
+
+.quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.quick-links a {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: border-color 0.15s, background 0.15s;
+}
+.quick-links a:hover {
+  border-color: var(--accent);
+  background: var(--surface-2);
+  text-decoration: none;
+}
+
+/* ---- Screenshots gallery (press kit + game page) ---- */
+
+.gallery img {
+  max-width: 100%;
+  margin: 0.5rem 0;
+  border-radius: 4px;
+  display: block;
+}
+
+.video-placeholder {
+  background: var(--surface);
+  padding: 4rem;
+  text-align: center;
+  color: var(--muted);
+  border-radius: 4px;
+}
+
+/* ---- Portrait image (press kit + about page) ---- */
+
+#about, .has-portrait { display: flow-root; }
+
+.portrait {
+  float: right;
+  width: 250px;
+  max-width: 40%;
+  height: auto;
+  border-radius: 8px;
+  margin: 0 0 1rem 1.5rem;
+}
+
+@media (max-width: 600px) {
+  .portrait {
+    float: none;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto 1.5rem;
+    display: block;
+  }
+}
+
+/* ---- Footer ---- */
+
+footer {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  margin-top: 4rem;
+  font-size: 0.9rem;
+}
+
+/* ---- Responsive nav ---- */
+
+@media (max-width: 600px) {
+  .site-nav { padding: 0.7rem 1rem; }
+  .nav-links { gap: 1rem; }
+  .studio-hero h1 { font-size: 2.2rem; }
+  .hero h1 { font-size: 2rem; }
+}

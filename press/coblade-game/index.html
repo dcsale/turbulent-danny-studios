@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>[GAME_NAME] Press Kit · Turbulent Danny Studios</title>
+  <meta name="description" content="Press kit for [GAME_NAME] from Turbulent Danny Studios" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="/" class="nav-brand">Turbulent Danny Studios</a>
+  <ul class="nav-links">
+    <li><a href="/games/">Games</a></li>
+    <li><a href="/press/">Press</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="/contact/">Contact</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <img src="/images/logo/coblade-logo.png" alt="[GAME_NAME] logo" class="logo" />
+  <h1>[GAME_NAME]</h1>
+  <p class="tagline">A physics-driven wind energy game</p>
+</header>
+
+<main>
+
+  <section id="factsheet">
+    <h2>Factsheet</h2>
+    <table>
+      <tr><th>Developer</th><td>Turbulent Danny Studios LLC &middot; D.C. Sale &mdash; <a href="https://github.com/dcsale">github.com/dcsale</a></td></tr>
+      <tr><th>Based in</th><td>Colorado, USA</td></tr>
+      <tr><th>Engine</th><td>Bevy (Rust) + avian3d physics</td></tr>
+      <tr><th>Platforms</th><td>Windows, Linux (macOS planned)</td></tr>
+      <tr><th>Stores</th><td>Steam (TBA), itch.io: <a href="https://dcsale.itch.io/coblade-game">dcsale.itch.io/coblade-game</a></td></tr>
+      <tr><th>Steam launch price</th><td>$4.99 USD</td></tr>
+      <tr><th>itch.io price</th><td>Name your price ($0 minimum)</td></tr>
+      <tr><th>Release date</th><td>TBA</td></tr>
+      <tr><th>Press contact</th><td><a href="mailto:sale.danny@gmail.com">sale.danny@gmail.com</a></td></tr>
+      <tr><th>Studio website</th><td><a href="/">turbulentdannystudios.com</a></td></tr>
+      <tr><th>Social</th><td>
+        <a href="https://github.com/dcsale">GitHub</a>,
+        <a href="https://reddit.com/u/turbulent_dan">Reddit</a>,
+        <a href="https://dcsale.substack.com">Substack</a>
+      </td></tr>
+    </table>
+  </section>
+
+  <section id="description">
+    <h2>Description</h2>
+
+    <h3>Short (~60 words)</h3>
+    <p>[GAME_NAME] is an experimental wind-energy game and digital-twin sandbox built in Bevy/Rust. Explore turbine test ranges, inspect 3D asset rails, select individual or grouped turbines, view SCADA-style turbine data, and test evolving MBDyn structural turbine rigs. This is an active technical playtest build. Expect experimental systems, placeholder visuals, and ongoing performance tuning.</p>
+
+    <h3>Long</h3>
+    <p>[GAME_NAME] is an experimental wind-energy game and digital-twin sandbox built in Bevy/Rust. Explore turbine test ranges, inspect 3D asset rails, select individual or grouped turbines, view SCADA-style turbine data, and test evolving MBDyn structural turbine rigs. This is an active technical playtest build. Expect experimental systems, placeholder visuals, and ongoing performance tuning.</p>
+
+    <p><strong>Current playtest focus:</strong> Phase 3 is now stabilized around turbine selection, grouped SCADA, camera controls, asset rails, vortex rooms, and structural rooms.</p>
+
+    <p>Phase 4 is starting now and focuses on scalable MBDyn turbine tiers:</p>
+    <ul>
+      <li>Visual proxy turbines</li>
+      <li>Lightweight MBDyn rigs</li>
+      <li>Active runtime rigs</li>
+      <li>Full focus/scientific rigs for detailed inspection</li>
+    </ul>
+  </section>
+
+  <section id="features">
+    <h2>Current Playtest Features</h2>
+    <ul>
+      <li>First-person and fly-camera exploration</li>
+      <li>Selectable wind turbines and MBDyn turbine rigs</li>
+      <li>Drag-select multiple turbines</li>
+      <li><code>Shift + number</code> turbine group assignment</li>
+      <li>Double-tap number keys to recall turbine groups</li>
+      <li>Combined group SCADA panel with summed power and averaged rotor/health data</li>
+      <li>Lightweight and full-detail MBDyn turbine visualization tiers</li>
+      <li>Asset rail map for reviewing imported 3D models</li>
+      <li>Animated asset previews where supported</li>
+      <li>Vortex particle test rooms</li>
+      <li>Structural blade/airfoil visualization rooms</li>
+      <li>Music radio controls and in-game UI control list</li>
+      <li>Weather, clouds, terrain, missions, and turbine collapse/destruction test systems</li>
+    </ul>
+  </section>
+
+  <section id="videos">
+    <h2>Trailer &amp; Videos</h2>
+    <!-- TODO Danny: replace with actual YouTube embed once trailer exists -->
+    <div class="video-placeholder">[TRAILER COMING SOON]</div>
+  </section>
+
+  <section id="screenshots">
+    <h2>Screenshots</h2>
+    <p>Click any image to download high-resolution.</p>
+    <div class="gallery">
+      <a href="/images/screenshots/01.png"><img src="/images/screenshots/01.png" alt="[GAME_NAME] screenshot 1" /></a>
+      <a href="/images/screenshots/02.png"><img src="/images/screenshots/02.png" alt="[GAME_NAME] screenshot 2" /></a>
+      <a href="/images/screenshots/03.png"><img src="/images/screenshots/03.png" alt="[GAME_NAME] screenshot 3" /></a>
+      <a href="/images/screenshots/04.png"><img src="/images/screenshots/04.png" alt="[GAME_NAME] screenshot 4" /></a>
+    </div>
+  </section>
+
+  <section id="logo">
+    <h2>Logo &amp; Brand</h2>
+    <ul>
+      <li><a href="/images/logo/coblade-logo.png">[GAME_NAME] logo (PNG)</a></li>
+      <!-- TODO Danny: when name is settled, rename file to match game's actual name -->
+    </ul>
+  </section>
+
+  <section id="about" class="has-portrait">
+    <h2>About the developer</h2>
+    <img src="/images/portrait/danny-on-turbine.png" alt="Danny Sale on top of a wind turbine" class="portrait" />
+    <p>Danny Sale is a wind-energy engineer with 18+ years spanning blade design, aerodynamics, testing, including years spent as wind turbine technicians &amp; researcher. He led aerodynamics and control systems projects from 2 MW to 20 MW+ wind turbine platforms supporting their certification &amp; campaigns. Combining certified field experience with advanced engineering expertise, he has now turned to game design to let his creativity go wild.</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Press inquiries: <a href="mailto:sale.danny@gmail.com">sale.danny@gmail.com</a></p>
+  </section>
+
+</main>
+
+<footer>
+  <p>&copy; D.C. Sale &mdash; <a href="/">Turbulent Danny Studios LLC</a></p>
+</footer>
+
+</body>
+</html>
