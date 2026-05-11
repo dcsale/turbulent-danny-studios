@@ -5,6 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Turbulent Danny Studios</title>
   <meta name="description" content="Turbulent Danny Studios — physics-driven indie games, music, and engineering tools by D.C. Sale" />
+
+  <link rel="icon" type="image/png" href="/favicon.png" />
+
+  <!-- Open Graph (Facebook, LinkedIn, Discord, Reddit, Bluesky, etc.) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Turbulent Danny Studios" />
+  <meta property="og:title" content="Turbulent Danny Studios" />
+  <meta property="og:description" content="Physics-driven indie games, music, and engineering tools by D.C. Sale" />
+  <meta property="og:url" content="https://turbulentdannystudios.com/" />
+  <meta property="og:image" content="https://turbulentdannystudios.com/images/logo/coblade-logo.png" />
+  <meta property="og:image:alt" content="Turbulent Danny Studios logo" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Turbulent Danny Studios" />
+  <meta name="twitter:description" content="Physics-driven indie games, music, and engineering tools by D.C. Sale" />
+  <meta name="twitter:image" content="https://turbulentdannystudios.com/images/logo/coblade-logo.png" />
+
   <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
@@ -21,27 +39,31 @@
 
 <header class="studio-hero">
   <h1>Turbulent Danny Studios</h1>
-  <!-- TODO Danny: 6-12 word studio tagline. Examples of length only, not content:
-       "Physics-driven indie games and tools" / "Wind energy meets game development" -->
-  <p class="tagline">[STUDIO_TAGLINE]</p>
+  <!--
+    Studio tagline (6-12 words). Hidden until Danny writes one. To enable,
+    uncomment the line below and replace [STUDIO_TAGLINE] with the chosen text.
+    <p class="tagline">[STUDIO_TAGLINE]</p>
+  -->
 </header>
 
 <main>
 
-  <section>
-    <!-- TODO Danny: 80-120 word studio intro paragraph.
-         What the studio is, who's behind it, what it makes, why it exists.
-         Reference D.C. Sale's wind-energy / engineering background and the
-         indie-creator focus. Reuse / adapt the press kit's About paragraph
-         if it fits. -->
-    <p>[STUDIO_INTRO_PARAGRAPH]</p>
-  </section>
+  <!--
+    Studio intro paragraph (80-120 words). Hidden until Danny writes one.
+    To enable, uncomment this section and replace [STUDIO_INTRO_PARAGRAPH]
+    with the chosen text. Suggested source material: the about-page bio,
+    the press kit About section, or a fresh draft.
+
+    <section>
+      <p>[STUDIO_INTRO_PARAGRAPH]</p>
+    </section>
+  -->
 
   <section>
     <h2>Latest game</h2>
     <a href="/games/coblade-game/" class="game-card">
-      <h3>[GAME_NAME]</h3>
-      <p>[GAME_TAGLINE — short one-line hook, e.g., "A physics-driven wind energy game"]</p>
+      <h3>CoBlade-Game <span style="color: var(--muted); font-weight: normal; font-size: 0.85em;">(working title)</span></h3>
+      <p>An experimental wind-energy game and digital-twin sandbox built in Bevy/Rust. Currently in playtest, free on itch.io.</p>
     </a>
   </section>
 
@@ -57,6 +79,12 @@
     </div>
   </section>
 
+  <section>
+    <h2>Subscribe to the Substack</h2>
+    <p style="color: var(--muted); margin-bottom: 1rem;">Devlogs, engineering deep-dives, and CoBlade-Game updates from D.C. Sale.</p>
+    <iframe src="https://dcsale.substack.com/embed" width="100%" height="150" style="border: 1px solid var(--border); background: var(--surface); border-radius: 6px;" frameborder="0" scrolling="no"></iframe>
+  </section>
+
 </main>
 
 <footer>
@@ -67,6 +95,42 @@
     <a href="/press/">Press</a>
   </p>
 </footer>
+
+<!-- Schema.org Organization markup for Google rich-results -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Turbulent Danny Studios",
+  "alternateName": "Turbulent Danny Studios LLC",
+  "url": "https://turbulentdannystudios.com",
+  "logo": "https://turbulentdannystudios.com/images/logo/coblade-logo.png",
+  "description": "Physics-driven indie games, music, and engineering tools by D.C. Sale",
+  "founder": {
+    "@type": "Person",
+    "name": "D.C. Sale",
+    "alternateName": "Danny Sale",
+    "url": "https://github.com/dcsale"
+  },
+  "foundingDate": "2026-05-09",
+  "foundingLocation": {
+    "@type": "Place",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Denver",
+      "addressRegion": "CO",
+      "addressCountry": "US"
+    }
+  },
+  "sameAs": [
+    "https://www.youtube.com/@TurbulentDannyStudios",
+    "https://dcsale.substack.com",
+    "https://dcsale.itch.io/coblade-game",
+    "https://github.com/dcsale",
+    "https://reddit.com/u/turbulent_dan"
+  ]
+}
+</script>
 
 </body>
 </html>
