@@ -13,22 +13,14 @@ Until DNS is configured: https://dcsale.github.io/turbulent-danny-studios/
 - `/` — Studio homepage (hero + featured game card + quick links)
 - `/about/` — Studio + Danny bio with portrait
 - `/games/` — Games index
-- `/games/coblade-game/` — `[GAME_NAME]` landing page (rename slug when Steam name is settled)
+- `/games/rad-winds/` — Rad Winds landing page
 - `/press/` — Press hub
-- `/press/coblade-game/` — `[GAME_NAME]` press kit (migrated from `dcsale/coblade-game-press`)
+- `/press/rad-winds/` — Rad Winds press kit (originally migrated from the now-deleted `dcsale/coblade-game-press` repo)
 - `/contact/` — Contact info, social links
 
 ## Updating
 
-Static prose has `TODO Danny` markers — search for them in the HTML files. The placeholder `[GAME_NAME]` appears throughout; find/replace with the chosen Steam title once decided.
-
-The slug `coblade-game/` in directory paths can be renamed in one commit when the game name is finalized:
-
-```bash
-git mv games/coblade-game games/<new-name>
-git mv press/coblade-game press/<new-name>
-# Update any internal links via find/replace
-```
+Static prose has `TODO Danny` markers — search for them in the HTML files. Update copy as the game evolves and new content needs to land.
 
 ## Local preview
 
@@ -60,9 +52,4 @@ To configure the custom domain `turbulentdannystudios.com`:
 - `images/screenshots/` — Game screenshots (copy from existing press kit)
 - `images/gifs/` — Animated devlog clips (future)
 
-To migrate from the existing press kit repo, copy:
-```
-dcsale/coblade-game-press/images/logo/coblade-logo.png  →  turbulent-danny-studios/images/logo/coblade-logo.png
-dcsale/coblade-game-press/images/portrait/danny-on-turbine.png  →  turbulent-danny-studios/images/portrait/danny-on-turbine.png
-dcsale/coblade-game-press/images/screenshots/01.png — 04.png  →  turbulent-danny-studios/images/screenshots/01.png — 04.png
-```
+All press-kit image assets were migrated from the original `dcsale/coblade-game-press` repo (now deleted) and live under `images/` in this repo. The `coblade-logo.png` filename is kept as a stable file identifier; rename only if the brand logo asset itself is redesigned for Rad Winds.

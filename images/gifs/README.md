@@ -10,7 +10,7 @@ Recommended:
 - Show one specific feature or moment
 
 These clips can be sourced from:
-- The CoBlade-Game `devlog_capture.rs` plugin (F11 frame recording → ffmpeg conversion)
+- The Rad Winds `devlog_capture.rs` plugin (F11 frame recording → ffmpeg conversion)
 - ParaView/VisIt rendering of canonical validation cases (per the Physics Testbed abstracts plan)
 
 ```bash
