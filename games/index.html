@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="Physics-driven indie games from Turbulent Danny Studios." />
   <meta name="twitter:image" content="https://turbulentdannystudios.com/images/logo/coblade-logo.png" />
 
-  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/style.css?v=2" />
 </head>
 <body>
 
@@ -35,25 +35,42 @@
   </ul>
 </nav>
 
-<header class="hero">
-  <h1>Games</h1>
-  <p class="tagline">Physics-driven indie games from Turbulent Danny Studios</p>
-</header>
+<!-- GAMES STAGE: the lineup over a rotating full-field background -->
+<section class="stage"
+         data-clips="/images/gifs/rad-winds-destruction.webm|/images/gifs/rad-winds-wake.webm|/images/gifs/wartburg-seasons.webm|/images/gifs/rad-winds-shoreline.webm"
+         data-captions="Rad Winds &middot; physics destruction testbed|Rad Winds &middot; live wake visualization|Wartburg TN &middot; a year in the canopy|Rad Winds &middot; fly the Puget Sound range">
+  <div class="stage-content" style="max-width: 900px;">
+    <h1 style="font-size: 2.5rem; color: #fff; margin: 0 0 0.3rem;">Games</h1>
+    <p class="tagline" style="color: #d6e2ee; margin: 0;">Physics-driven indie games from Turbulent Danny Studios</p>
+    <div class="game-grid" style="margin-top: 1.6rem;">
+
+      <a href="/games/rad-winds/" class="game-card rich">
+        <div class="card-media">
+          <img src="/images/screenshots/03.png" alt="Rad Winds — a wind turbine and its rainbow-coloured wake over the Puget Sound" loading="lazy" />
+        </div>
+        <div class="card-body">
+          <h3>Rad Winds <span class="status-pill live">In playtest</span></h3>
+          <p>An experimental wind-energy game and physics sandbox built in Bevy/Rust. Currently in playtest, free on itch.io.</p>
+        </div>
+      </a>
+
+      <a href="/games/war-critters/" class="game-card rich">
+        <div class="card-media ph">Screenshot coming soon</div>
+        <div class="card-body">
+          <h3>WarCritters <span class="status-pill dev">In development</span></h3>
+          <p>A physics team battle-arena — draft an army of low-poly animals, command them from above, then possess one and fight up close. Built in Bevy/Rust + avian3d.</p>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
 
 <main>
 
   <section>
-    <h2>Now playing</h2>
-
-    <a href="/games/rad-winds/" class="game-card">
-      <h3>Rad Winds</h3>
-      <p>An experimental wind-energy game and physics sandbox built in Bevy/Rust. Currently in playtest, free on itch.io.</p>
-    </a>
-  </section>
-
-  <section>
-    <h2>Coming later</h2>
-    <p style="color: var(--muted);">More games are in the studio pipeline. Subscribe to the <a href="https://dcsale.substack.com">Substack</a> for development updates.</p>
+    <h2>More in the pipeline</h2>
+    <p style="color: var(--muted);">Additional games are in the studio pipeline. Subscribe to the <a href="https://dcsale.substack.com">Substack</a> for development updates.</p>
   </section>
 
 </main>
@@ -61,6 +78,8 @@
 <footer>
   <p>&copy; D.C. Sale &mdash; Turbulent Danny Studios LLC</p>
 </footer>
+
+<script src="/clips.js?v=2" defer></script>
 
 </body>
 </html>

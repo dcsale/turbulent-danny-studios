@@ -71,6 +71,29 @@ main {
 
 main.wide { max-width: 1000px; }
 
+/* plain centered content column between full-bleed stages */
+.content-col {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+}
+
+/* full-frame showcase figure: the whole capture, nothing cropped
+   (used for the SCADA / Energy-Ship clip where the HUD IS the content) */
+.showcase {
+  position: relative;
+  margin: 0;
+  background: #000;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.showcase video,
+.showcase img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* ---- Studio homepage hero (index.html only) ---- */
 
 .studio-hero {
@@ -281,4 +304,428 @@ footer {
   .nav-links { gap: 1rem; }
   .studio-hero h1 { font-size: 2.2rem; }
   .hero h1 { font-size: 2rem; }
+}
+
+/* ============================================================
+   Visual polish: cinematic backgrounds, motion strips, rich cards
+   Added 2026-08-29. Motion strips auto-scroll a screenshot as a
+   stand-in for real F11/F12 gameplay clips; swap the <img> for a
+   looping <video>/<img src=".webm"> when final footage is picked.
+   ============================================================ */
+
+/* ---- Full-bleed helper (break out of the 800px main column) ---- */
+
+/* clip (not hidden) so 100vw bands can't add a horizontal scrollbar,
+   while the sticky top-nav keeps working. */
+html { overflow-x: clip; }
+
+.full-bleed {
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ---- Hero with a screenshot background ----
+   Usage: <header class="hero hero-bg" style="--hero-img:url(/images/screenshots/03.png)">
+   A dark gradient scrim keeps title/HUD noise back and text legible. */
+
+.hero-bg {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+  padding: 6rem 1.5rem 4rem;
+  background-image:
+    linear-gradient(180deg,
+      rgba(14, 17, 22, 0.55) 0%,
+      rgba(14, 17, 22, 0.68) 45%,
+      rgba(14, 17, 22, 0.92) 82%,
+      var(--bg) 100%),
+    var(--hero-img);
+  background-size: cover, cover;
+  background-position: center 38%, center 38%;
+  background-repeat: no-repeat;
+}
+
+.hero-bg h1,
+.hero-bg .tagline { position: relative; z-index: 1; text-shadow: 0 2px 18px rgba(0, 0, 0, 0.75); }
+.hero-bg h1 { color: #fff; }
+.hero-bg .tagline { color: #d6e2ee; }
+.hero-bg .logo { position: relative; z-index: 1; filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.6)); }
+
+/* accent underline glow under the hero heading */
+.hero-bg h1::after {
+  content: "";
+  display: block;
+  width: 84px;
+  height: 3px;
+  margin: 1.1rem auto 0;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+
+/* ---- Motion strip: bold auto-scrolling screenshot band ---- */
+
+.media-strip {
+  position: relative;
+  height: clamp(190px, 32vh, 360px);
+  overflow: hidden;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin: 3rem 0;
+}
+.full-bleed.media-strip { margin-top: 3.5rem; margin-bottom: 3.5rem; margin-left: 50%; }
+
+.media-strip img,
+.media-strip video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 0% 50%;
+  transform: scale(1.08);
+  will-change: object-position;
+  animation: strip-pan 16s ease-in-out infinite alternate;
+  display: block;
+}
+
+/* pace variants */
+.media-strip.pan-fast img,
+.media-strip.pan-fast video { animation-duration: 11s; }
+.media-strip.pan-slow img,
+.media-strip.pan-slow video { animation-duration: 24s; }
+
+/* .clip = a real gameplay loop (GIF/webm) supplies the motion itself,
+   so switch OFF the fake camera pan. Swap the <img src=".gif"> for a
+   <video src=".webm" autoplay muted loop playsinline> before public push. */
+.media-strip.clip img,
+.media-strip.clip video {
+  animation: none;
+  transform: none;
+  object-position: center 50%;
+}
+
+/* Playlist crossfade layers (created by clips.js). Two stacked <video>s
+   fade between clips; only .show is opaque. */
+.media-strip.clip .clip-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 50%;
+  opacity: 0;
+  transition: opacity 0.65s ease;
+}
+.media-strip.clip .clip-layer.show { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .media-strip.clip .clip-layer { transition: none; }
+}
+
+/* ============================================================
+   Immersive "stage": full-field media background + a frosted,
+   semi-opaque content panel that scrolls in front of it.
+   ============================================================ */
+
+.stage {
+  position: relative;
+  overflow: hidden;
+  min-height: clamp(500px, 80vh, 860px);
+  display: flex;
+  align-items: center;
+  padding: 3.5rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* media fills the whole stage (shows the full frame, not a thin slice) */
+.stage .clip-layer,
+.stage > video.stage-media,
+.stage > img.stage-media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 50%;
+  z-index: 0;
+}
+
+/* readable scrim over the media */
+.stage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(180deg,
+    rgba(14,17,22,0.50) 0%,
+    rgba(14,17,22,0.28) 32%,
+    rgba(14,17,22,0.42) 68%,
+    rgba(14,17,22,0.86) 100%);
+}
+
+/* the frosted text panel in front */
+.stage-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  background: rgba(16, 22, 30, 0.70);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 14px;
+  padding: 2rem 2.2rem;
+  -webkit-backdrop-filter: blur(10px) saturate(1.1);
+  backdrop-filter: blur(10px) saturate(1.1);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.5);
+}
+.stage-content > :first-child { margin-top: 0; }
+.stage-content > :last-child { margin-bottom: 0; }
+.stage-content .logo {
+  display: block;
+  max-width: 170px;
+  height: auto;
+  margin: 0 auto 1rem;
+  border-radius: 8px;
+}
+.stage-content section { margin: 1.6rem 0; border: none; padding: 0; }
+.stage-content section:first-child { margin-top: 0; }
+
+.stage > .strip-caption { z-index: 2; }
+
+/* hero variant: taller, centered, lighter panel */
+.stage.hero-stage { min-height: 100vh; text-align: center; }
+.stage.hero-stage .stage-content {
+  max-width: 660px;
+  background: rgba(16, 22, 30, 0.52);
+}
+.stage.hero-stage h1 { font-size: 3rem; color: #fff; margin: 0.3rem 0; letter-spacing: -0.02em; }
+.stage.hero-stage h1::after {
+  content: ""; display: block; width: 84px; height: 3px; margin: 1.1rem auto 0;
+  border-radius: 2px; background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+.stage.hero-stage .tagline { color: #d6e2ee; font-size: 1.2rem; }
+
+/* clip-layer opacity crossfade works in either context */
+.clip-layer { opacity: 0; transition: opacity 0.65s ease; }
+.clip-layer.show { opacity: 1; }
+
+/* ---- forward/back controls for playlist backgrounds ---- */
+.clip-nav {
+  position: absolute;
+  z-index: 3;
+  right: 1.1rem;
+  bottom: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.6rem;
+  background: rgba(14, 17, 22, 0.74);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+  -webkit-backdrop-filter: blur(7px);
+  backdrop-filter: blur(7px);
+}
+.clip-nav button {
+  background: none;
+  border: none;
+  color: #d6e2ee;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+.clip-prev, .clip-next {
+  font-size: 1.25rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s;
+}
+.clip-prev:hover, .clip-next:hover { color: #fff; background: rgba(255, 255, 255, 0.14); }
+.clip-dots { display: flex; align-items: center; gap: 0.35rem; }
+.clip-dots .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.32);
+  transition: background 0.15s, transform 0.15s;
+}
+.clip-dots .dot:hover { background: rgba(255, 255, 255, 0.6); }
+.clip-dots .dot.active { background: var(--accent); transform: scale(1.25); }
+
+@media (max-width: 600px) {
+  .clip-nav { right: 0.6rem; bottom: 0.6rem; }
+}
+
+/* ---- Horizontal snap-scroll gallery (screenshots) ---- */
+
+.hscroll {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 0.25rem 0 1rem;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+.hscroll > * {
+  flex: 0 0 auto;
+  width: min(86%, 760px);
+  scroll-snap-align: center;
+}
+.hscroll a { display: block; }
+.hscroll img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+.hscroll-hint {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin: 0 0 0.5rem;
+}
+
+@media (max-width: 600px) {
+  .stage { min-height: clamp(440px, 78vh, 680px); padding: 3rem 1rem; }
+  .stage.hero-stage { min-height: 88vh; }
+  .stage-content { padding: 1.4rem 1.3rem; }
+  .stage.hero-stage h1 { font-size: 2.2rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stage .clip-layer { transition: none; }
+}
+
+@keyframes strip-pan {
+  from { object-position: 0% 50%; }
+  to   { object-position: 100% 50%; }
+}
+
+/* readable vignette + caption over the strip */
+.media-strip::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg,
+    rgba(14, 17, 22, 0.35) 0%,
+    rgba(14, 17, 22, 0) 22%,
+    rgba(14, 17, 22, 0) 78%,
+    rgba(14, 17, 22, 0.35) 100%);
+}
+
+.strip-caption {
+  position: absolute;
+  left: 1.2rem;
+  bottom: 1rem;
+  z-index: 2;
+  font-size: 0.85rem;
+  color: #d6e2ee;
+  background: rgba(14, 17, 22, 0.6);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 0.3rem 0.7rem;
+  backdrop-filter: blur(4px);
+}
+
+/* ---- Placeholder strip (no footage yet: WarCritters) ---- */
+
+.media-strip.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    repeating-linear-gradient(135deg,
+      var(--surface) 0, var(--surface) 22px,
+      var(--surface-2) 22px, var(--surface-2) 44px);
+  border: 1px dashed var(--border-bright);
+}
+.media-strip.placeholder::after { display: none; }
+.media-strip.placeholder .ph-label {
+  color: var(--muted);
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+  text-align: center;
+  padding: 1rem;
+}
+.media-strip.placeholder .ph-label strong { color: var(--accent); font-weight: 600; }
+
+/* ---- Rich game cards (image + overlay) ---- */
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.game-card.rich {
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.game-card.rich .card-media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--surface-2);
+}
+.game-card.rich .card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 42%;
+  transition: transform 0.4s ease;
+}
+.game-card.rich:hover .card-media img { transform: scale(1.06); }
+
+/* placeholder media for a game with no screenshots yet */
+.game-card.rich .card-media.ph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(120% 120% at 30% 20%, var(--surface-2), var(--surface)),
+    repeating-linear-gradient(135deg, transparent 0 20px, rgba(255,255,255,0.02) 20px 40px);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.game-card.rich .card-body { padding: 1.1rem 1.3rem 1.4rem; }
+.game-card.rich .card-body h3 { margin-top: 0; }
+
+/* status pill on a card */
+.status-pill {
+  display: inline-block;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.18rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-bright);
+  color: var(--muted);
+  vertical-align: middle;
+  margin-left: 0.5rem;
+}
+.status-pill.live { color: #56d364; border-color: rgba(86, 211, 100, 0.4); }
+.status-pill.dev  { color: #e3b341; border-color: rgba(227, 179, 65, 0.4); }
+
+/* ---- Accessibility: respect reduced-motion ---- */
+
+@media (prefers-reduced-motion: reduce) {
+  .media-strip img,
+  .media-strip video { animation: none; object-position: center 50%; transform: none; }
+  .game-card.rich:hover .card-media img { transform: none; }
+}
+
+@media (max-width: 600px) {
+  .hero-bg { padding: 4.5rem 1.2rem 3rem; }
+  .media-strip { height: clamp(150px, 28vh, 240px); }
 }

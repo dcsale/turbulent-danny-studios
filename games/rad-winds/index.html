@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="A physics-driven wind energy game and physics sandbox built in Bevy/Rust. Free on itch.io." />
   <meta name="twitter:image" content="https://turbulentdannystudios.com/images/screenshots/01.png" />
 
-  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/style.css?v=2" />
 </head>
 <body>
 
@@ -35,28 +35,69 @@
   </ul>
 </nav>
 
-<header class="hero">
-  <img src="/images/logo/coblade-logo.png" alt="Rad Winds logo" class="logo" />
-  <h1>Rad Winds</h1>
-  <p class="tagline">A physics-driven wind energy game</p>
-</header>
+<!-- HERO STAGE -->
+<section class="stage hero-stage"
+         data-clips="/images/gifs/rad-winds-wake.webm|/images/gifs/rad-winds-destruction.webm|/images/gifs/rad-winds-shoreline.webm|/images/gifs/wartburg-seasons.webm"
+         data-captions="Live wake visualization &middot; MBDyn turbine rig|Physics destruction testbed|Fly the turbine test range &middot; Puget Sound|Wartburg TN &middot; a year in the canopy">
+  <div class="stage-content">
+    <img src="/images/logo/coblade-logo.png" alt="Rad Winds logo" class="logo" />
+    <h1>Rad Winds</h1>
+    <p class="tagline">A physics-driven wind energy game</p>
+  </div>
+  <span class="strip-caption">Rad Winds &middot; live wake visualization</span>
+</section>
 
-<main>
-
-  <section>
+<!-- ABOUT STAGE -->
+<section class="stage"
+         data-clips="/images/gifs/rad-winds-destruction.webm|/images/gifs/rad-winds-wake.webm|/images/gifs/rad-winds-shoreline.webm"
+         data-captions="Physics destruction testbed|Live wake visualization|Fly the turbine test range &middot; Puget Sound">
+  <div class="stage-content">
     <h2>About</h2>
     <p>Rad Winds is an experimental wind-energy game and physics sandbox built in Bevy/Rust. Explore turbine test ranges, inspect 3D asset rails, select individual or grouped turbines, view SCADA-style turbine data, and test evolving MBDyn structural turbine rigs. This is an active technical playtest build. Expect experimental systems, placeholder visuals, and ongoing performance tuning.</p>
-
     <p><strong>Current playtest focus:</strong> Phase 3 is now stabilized around turbine selection, grouped SCADA, camera controls, asset rails, vortex rooms, and structural rooms.</p>
+    <p>Phase 4 is starting now and focuses on scalable MBDyn turbine tiers: visual proxy turbines, lightweight MBDyn rigs, active runtime rigs, and full focus/scientific rigs for detailed inspection.</p>
+  </div>
+</section>
 
-    <p>Phase 4 is starting now and focuses on scalable MBDyn turbine tiers:</p>
-    <ul>
-      <li>Visual proxy turbines</li>
-      <li>Lightweight MBDyn rigs</li>
-      <li>Active runtime rigs</li>
-      <li>Full focus/scientific rigs for detailed inspection</li>
-    </ul>
+<!-- ENERGY SHIPS: two drivable-rig abilities, shown full-frame so the SCADA reads -->
+<div class="content-col">
+  <section>
+    <h2>Energy Ships &amp; live SCADA</h2>
+    <p>Select any turbine and a full <strong>SCADA panel</strong> opens up: live power, rotor-speed and health dials, blade-root and tower-base moments, tip deflection, modal frequencies, wind resource, utilization and MBDyn structural tier &mdash; the same read-outs a real turbine engineer watches on a live machine.</p>
+    <p>An <strong>Energy Ship</strong> is a turbine you pilot yourself. They come in different builds with different abilities, and the SCADA keeps updating in real time as you drive.</p>
+    <p><strong>Tracked land crawler &mdash;</strong> engage the tank-tracks and drive or yaw a geared crawler turbine across the terrain.</p>
   </section>
+</div>
+
+<div class="full-bleed showcase">
+  <video src="/images/gifs/rad-winds-scada.webm" autoplay muted loop playsinline preload="auto"></video>
+  <span class="strip-caption">Energy Ship &middot; tracked land crawler &middot; live SCADA</span>
+</div>
+
+<div class="content-col">
+  <section>
+    <p><strong>Feeder-ship &mdash;</strong> a 15&nbsp;MW hull-mounted turbine that floats and ballasts on the water, holding station while its hull takes hits.</p>
+  </section>
+</div>
+
+<div class="full-bleed showcase">
+  <video src="/images/gifs/rad-winds-feedership.webm" autoplay muted loop playsinline preload="auto"></video>
+  <span class="strip-caption">Energy Ship &middot; 15&nbsp;MW feeder-ship &middot; live SCADA</span>
+</div>
+
+<!-- MUTANT TURBINES: Cosserat flexible-body feature, in development — no footage yet (honest teaser) -->
+<div class="content-col">
+  <section>
+    <h2>Mutant Turbines <span class="status-pill dev">In development</span></h2>
+    <p>A different branch of turbine tech, in active development: <strong>Mutant Turbines</strong> use discrete-Cosserat flexible rods for whole-body compliance &mdash; the vision is blades that curl and <strong>grab like hands</strong>, and turbine towers that <strong>walk on flexible legs</strong> across the range.</p>
+  </section>
+</div>
+
+<div class="media-strip full-bleed placeholder">
+  <span class="ph-label">&#9654;&nbsp; <strong>Mutant Turbine footage coming</strong><br />flexible-blade &amp; walking-leg capture in development</span>
+</div>
+
+<div class="content-col">
 
   <section>
     <h2>Where to play</h2>
@@ -86,6 +127,20 @@
     </ul>
   </section>
 
+</div>
+
+<!-- PROCEDURAL CANOPY STAGE -->
+<section class="stage">
+  <video class="stage-media" src="/images/gifs/wartburg-seasons.webm" autoplay muted loop playsinline preload="auto"></video>
+  <div class="stage-content">
+    <h2>Procedural Appalachian canopy</h2>
+    <p>The Wartburg TN level grows a forest from real USGS LiDAR canopy-height data &mdash; white oak, chestnut oak, tulip poplar, red maple, eastern hemlock, Virginia pine and more. Every species carries a four-season material set, so the same hillside greens up in spring, deepens through summer, turns in autumn, and drops to bare branches under winter snow &mdash; while the conifers stay evergreen.</p>
+  </div>
+  <span class="strip-caption">Wartburg TN &middot; a year in one place</span>
+</section>
+
+<div class="content-col">
+
   <section>
     <h2>Trailer</h2>
     <!-- TODO Danny: replace with actual YouTube embed once trailer exists.
@@ -95,11 +150,12 @@
 
   <section>
     <h2>Screenshots</h2>
-    <div class="gallery">
-      <a href="/images/screenshots/01.png"><img src="/images/screenshots/01.png" alt="Rad Winds screenshot 1" /></a>
-      <a href="/images/screenshots/02.png"><img src="/images/screenshots/02.png" alt="Rad Winds screenshot 2" /></a>
-      <a href="/images/screenshots/03.png"><img src="/images/screenshots/03.png" alt="Rad Winds screenshot 3" /></a>
-      <a href="/images/screenshots/04.png"><img src="/images/screenshots/04.png" alt="Rad Winds screenshot 4" /></a>
+    <p class="hscroll-hint">Scroll sideways for more &rarr;</p>
+    <div class="hscroll">
+      <a href="/images/screenshots/03.png"><img src="/images/screenshots/03.png" alt="Rad Winds screenshot — turbine and rainbow wake over the Puget Sound" loading="lazy" /></a>
+      <a href="/images/screenshots/04.png"><img src="/images/screenshots/04.png" alt="Rad Winds screenshot — nacelle above the Seattle skyline at dusk" loading="lazy" /></a>
+      <a href="/images/screenshots/02.png"><img src="/images/screenshots/02.png" alt="Rad Winds screenshot — turbine designer and SCADA overlay" loading="lazy" /></a>
+      <a href="/images/screenshots/01.png"><img src="/images/screenshots/01.png" alt="Rad Winds screenshot — level select" loading="lazy" /></a>
     </div>
     <p style="margin-top: 1rem;">Higher-resolution assets and the full press kit are available on the <a href="/press/rad-winds/">press page</a>.</p>
   </section>
@@ -109,11 +165,13 @@
     <p>Rad Winds is powered by the open-source <a href="https://github.com/dcsale/CoBlade">CoBlade</a> physics toolchain and developer D.C. Sale's wind-energy engineering work (papers in preparation for <em>Wind Energy Science</em>, 2026). The game brings real composite blade structural analysis, vortex-particle aerodynamics, and MBDyn multi-body dynamics into an interactive 3D sandbox.</p>
   </section>
 
-</main>
+</div>
 
 <footer>
   <p>&copy; D.C. Sale &mdash; Turbulent Danny Studios LLC</p>
 </footer>
+
+<script src="/clips.js?v=2" defer></script>
 
 </body>
 </html>

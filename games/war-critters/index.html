@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WarCritters · Turbulent Danny Studios</title>
+  <meta name="description" content="WarCritters — a physics-driven team battle-arena from Turbulent Danny Studios. Command armies of animals, or possess one and fight in the thick of it. Built in Bevy/Rust. In development." />
+
+  <link rel="icon" type="image/png" href="/favicon.png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Turbulent Danny Studios" />
+  <meta property="og:title" content="WarCritters" />
+  <meta property="og:description" content="A physics-driven team battle-arena — command armies of low-poly animals, then possess one and fight up close. Built in Bevy/Rust. In development." />
+  <meta property="og:url" content="https://turbulentdannystudios.com/games/war-critters/" />
+  <meta property="og:image" content="https://turbulentdannystudios.com/images/logo/coblade-logo.png" />
+  <meta property="og:image:alt" content="Turbulent Danny Studios logo" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="WarCritters — Turbulent Danny Studios" />
+  <meta name="twitter:description" content="A physics-driven team battle-arena built in Bevy/Rust. In development." />
+  <meta name="twitter:image" content="https://turbulentdannystudios.com/images/logo/coblade-logo.png" />
+
+  <link rel="stylesheet" href="/style.css?v=2" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="/" class="nav-brand">Turbulent Danny Studios</a>
+  <ul class="nav-links">
+    <li><a href="/games/">Games</a></li>
+    <li><a href="/press/">Press</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="/contact/">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO STAGE: the arena capture plays full-field behind the title -->
+<section class="stage hero-stage">
+  <video class="stage-media" src="/images/gifs/warcritters-arena.webm" autoplay muted loop playsinline preload="auto"></video>
+  <div class="stage-content">
+    <h1>WarCritters <span class="status-pill dev">In development</span></h1>
+    <p class="tagline">Command an army of critters. Then become one.</p>
+  </div>
+  <span class="strip-caption">WarCritters &middot; early in-engine capture (rough)</span>
+</section>
+
+<!-- ABOUT STAGE (reuses the arena footage) -->
+<section class="stage">
+  <video class="stage-media" src="/images/gifs/warcritters-arena.webm" autoplay muted loop playsinline preload="auto"></video>
+  <div class="stage-content">
+    <h2>About</h2>
+    <p>WarCritters is a physics-driven team battle-arena. Draft a squad of low-poly animals against a gold budget, place your buildings, and command the whole army from an RTS-style overhead view &mdash; then double-click any of your units to <strong>possess it</strong> and fight in first or third person, right in the middle of the brawl.</p>
+    <p>Every clash runs on real rigid-body physics: projectiles arc, melee lands with impact, and bodies tumble across the terrain. It's built in <strong>Bevy (Rust) with the avian3d physics engine</strong>, the same toolchain behind Rad Winds.</p>
+    <p style="color: var(--muted);"><em>An early single-player vertical slice &mdash; systems, art, and balance are all in active development, so expect placeholder visuals and rapid change.</em></p>
+  </div>
+</section>
+
+<div class="content-col">
+
+  <section>
+    <h2>What's in the slice</h2>
+    <ul>
+      <li>Animal roster with gold-budget army drafting</li>
+      <li>Overhead RTS command &mdash; select, group, and order your units</li>
+      <li>Possess any unit for first / third-person hero combat</li>
+      <li>Ranged weapons, projectiles, and physics-driven melee</li>
+      <li>Health, teams, and damage with AI-controlled enemy packs</li>
+      <li>Death &amp; respawn, live score HUD, and a win &rarr; end-of-match flow</li>
+      <li>Terrain arenas with a day/night cycle and weather</li>
+    </ul>
+  </section>
+
+</div>
+
+<!-- CAPTURE SLOT — a second angle (roster / RTS command view). Drop a clip/shot here. -->
+<div class="media-strip full-bleed placeholder">
+  <span class="ph-label">&#9654;&nbsp; <strong>Roster &amp; command view</strong><br />F12 / F11 slot &mdash; drop an army-draft or overhead-command capture here</span>
+</div>
+
+<div class="content-col">
+
+  <section>
+    <h2>Follow development</h2>
+    <div class="quick-links">
+      <a href="https://dcsale.substack.com">Devlog on Substack</a>
+      <a href="https://www.youtube.com/@TurbulentDannyStudios">YouTube</a>
+      <a href="https://github.com/dcsale">GitHub</a>
+      <a href="/games/">All games</a>
+    </div>
+    <p style="color: var(--muted); margin-top: 1rem;">No storefront page yet. Subscribe to the <a href="https://dcsale.substack.com">Substack</a> to hear when WarCritters hits its first public playtest.</p>
+  </section>
+
+  <section>
+    <h2>Factsheet</h2>
+    <table>
+      <tr><th>Developer</th><td>Turbulent Danny Studios LLC &middot; D.C. Sale</td></tr>
+      <tr><th>Based in</th><td>Colorado, USA</td></tr>
+      <tr><th>Engine</th><td>Bevy (Rust) + avian3d physics</td></tr>
+      <tr><th>Genre</th><td>Physics team battle-arena (RTS + possess-a-unit action)</td></tr>
+      <tr><th>Platforms</th><td>Windows, Linux (web/local multiplayer planned)</td></tr>
+      <tr><th>Status</th><td>In development &mdash; single-player vertical slice</td></tr>
+      <tr><th>Release date</th><td>TBA</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>Built alongside Rad Winds</h2>
+    <p>WarCritters shares its Bevy/Rust + avian3d foundations with <a href="/games/rad-winds/">Rad Winds</a>, the studio's wind-energy physics sandbox. Both come out of D.C. Sale's work on real physics and simulation tooling. <a href="/about/">More about the studio &rarr;</a></p>
+  </section>
+
+</div>
+
+<footer>
+  <p>&copy; D.C. Sale &mdash; <a href="/">Turbulent Danny Studios LLC</a></p>
+</footer>
+
+<script src="/clips.js?v=2" defer></script>
+
+</body>
+</html>

@@ -23,7 +23,7 @@
   <meta name="twitter:description" content="Physics-driven indie games, music, and engineering tools by D.C. Sale" />
   <meta name="twitter:image" content="https://turbulentdannystudios.com/images/logo/coblade-logo.png" />
 
-  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/style.css?v=2" />
 </head>
 <body>
 
@@ -37,35 +37,58 @@
   </ul>
 </nav>
 
-<header class="studio-hero">
-  <h1>Turbulent Danny Studios</h1>
-  <!--
-    Studio tagline (6-12 words). Hidden until Danny writes one. To enable,
-    uncomment the line below and replace [STUDIO_TAGLINE] with the chosen text.
-    <p class="tagline">[STUDIO_TAGLINE]</p>
-  -->
-</header>
+<!-- HERO STAGE: full-field media background, frosted title card in front -->
+<section class="stage hero-stage"
+         data-clips="/images/gifs/rad-winds-wake.webm|/images/gifs/wartburg-seasons.webm|/images/gifs/rad-winds-destruction.webm|/images/gifs/rad-winds-shoreline.webm"
+         data-captions="Rad Winds &middot; live wake visualization|Wartburg TN &middot; a year in the canopy|Rad Winds &middot; physics destruction testbed|Rad Winds &middot; fly the Puget Sound range">
+  <div class="stage-content">
+    <h1>Turbulent Danny Studios</h1>
+    <p class="tagline">Physics-driven indie games, built from real engineering</p>
+  </div>
+  <span class="strip-caption">Rad Winds &middot; live wake visualization</span>
+</section>
+
+<!-- GAMES STAGE -->
+<section class="stage"
+         data-clips="/images/gifs/rad-winds-destruction.webm|/images/gifs/rad-winds-wake.webm|/images/gifs/rad-winds-shoreline.webm|/images/gifs/wartburg-seasons.webm"
+         data-captions="Rad Winds &middot; physics destruction testbed|Rad Winds &middot; live wake visualization|Rad Winds &middot; fly the Puget Sound range|Wartburg TN &middot; a year in the canopy">
+  <div class="stage-content">
+    <h2>Games</h2>
+    <div class="game-grid">
+
+      <a href="/games/rad-winds/" class="game-card rich">
+        <div class="card-media">
+          <img src="/images/screenshots/03.png" alt="Rad Winds — a wind turbine and its rainbow-coloured wake over the Puget Sound" loading="lazy" />
+        </div>
+        <div class="card-body">
+          <h3>Rad Winds <span class="status-pill live">In playtest</span></h3>
+          <p>An experimental wind-energy game and physics sandbox in Bevy/Rust. Fly a turbine test range, wire up SCADA, and watch real structural rigs bend in the wind. Free on itch.io.</p>
+        </div>
+      </a>
+
+      <a href="/games/war-critters/" class="game-card rich">
+        <div class="card-media ph">Screenshot coming soon</div>
+        <div class="card-body">
+          <h3>WarCritters <span class="status-pill dev">In development</span></h3>
+          <p>A physics team battle-arena: draft an army of low-poly animals, command them from above, then double-click to possess one and fight in the thick of it. Built in Bevy/Rust + avian3d.</p>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- SEASONS STAGE: the canopy plays full-field behind the text -->
+<section class="stage">
+  <video class="stage-media" src="/images/gifs/wartburg-seasons.webm" autoplay muted loop playsinline preload="auto"></video>
+  <div class="stage-content">
+    <h2>A year in the canopy</h2>
+    <p>The Wartburg TN level grows a procedural Appalachian forest from real USGS LiDAR canopy-height data. Every species carries a four-season material set, so the same hillside greens up in spring, deepens through summer, turns in autumn, and drops to bare branches under winter snow &mdash; while the conifers stay evergreen.</p>
+  </div>
+  <span class="strip-caption">Wartburg TN &middot; a year in one place</span>
+</section>
 
 <main>
-
-  <!--
-    Studio intro paragraph (80-120 words). Hidden until Danny writes one.
-    To enable, uncomment this section and replace [STUDIO_INTRO_PARAGRAPH]
-    with the chosen text. Suggested source material: the about-page bio,
-    the press kit About section, or a fresh draft.
-
-    <section>
-      <p>[STUDIO_INTRO_PARAGRAPH]</p>
-    </section>
-  -->
-
-  <section>
-    <h2>Latest game</h2>
-    <a href="/games/rad-winds/" class="game-card">
-      <h3>Rad Winds</h3>
-      <p>An experimental wind-energy game and physics sandbox built in Bevy/Rust. Currently in playtest, free on itch.io.</p>
-    </a>
-  </section>
 
   <section>
     <h2>Around the studio</h2>
@@ -95,6 +118,8 @@
     <a href="/press/">Press</a>
   </p>
 </footer>
+
+<script src="/clips.js?v=2" defer></script>
 
 <!-- Schema.org Organization markup for Google rich-results -->
 <script type="application/ld+json">
