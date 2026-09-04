@@ -35,7 +35,15 @@
   </ul>
 </nav>
 
-<!-- HERO STAGE: the arena capture plays full-field behind the title -->
+<!-- HERO STAGE: a WarCritters capture plays full-field behind the title.
+     STUB — warcritters-arena.webm is an early, debug-heavy clip. To upgrade:
+       (a) drop in a CLEAN capture (debug HUD off: F3 hides physics wires, F10 hides
+           overlays) named /images/gifs/warcritters-hero.webm and point the <video> at it; OR
+       (b) rotate several clean clips like the Rad Winds hero — delete the <video> line,
+           add these two attributes to the <section> tag, and list your clips + captions:
+             data-clips="/images/gifs/warcritters-hero.webm|/images/gifs/warcritters-battle.webm|/images/gifs/warcritters-possess.webm"
+             data-captions="Draft an army &middot; watch it fight|Command from the RTS view|Possess any critter"
+           (clips.js is already loaded at the bottom of this page; see games/rad-winds/index.html) -->
 <section class="stage hero-stage">
   <video class="stage-media" src="/images/gifs/warcritters-arena.webm" autoplay muted loop playsinline preload="auto"></video>
   <div class="stage-content">
@@ -46,6 +54,27 @@
     </div>
   </div>
   <span class="strip-caption">WarCritters &middot; early in-engine capture (rough)</span>
+</section>
+
+<!-- SCREENSHOTS GALLERY — mirrors the Rad Winds page (games/rad-winds/index.html).
+     TO POPULATE: web-size Danny's hand-picked shots to ~1500px wide JPEG (quality ~82),
+     save them into /images/screenshots/wc/, then add one <a><img></a> line per shot inside
+     .hscroll below (see the commented template) and delete the .gallery-empty tile. -->
+<section class="gallery-band">
+  <div class="gallery-head">
+    <h2>Screenshots</h2>
+    <p class="hscroll-hint">Straight from the in-engine playtests &mdash; scroll sideways for more &rarr;</p>
+  </div>
+  <div class="hscroll">
+    <!-- DROP SHOTS HERE — one line per screenshot, alt text describes the shot:
+    <a href="/images/screenshots/wc/g2-0000000000-0000.jpg"><img src="/images/screenshots/wc/g2-0000000000-0000.jpg" alt="WarCritters — army draft" loading="lazy" /></a>
+    <a href="/images/screenshots/wc/g2-0000000000-0001.jpg"><img src="/images/screenshots/wc/g2-0000000000-0001.jpg" alt="WarCritters — RTS command view" loading="lazy" /></a>
+    <a href="/images/screenshots/wc/g2-0000000000-0002.jpg"><img src="/images/screenshots/wc/g2-0000000000-0002.jpg" alt="WarCritters — possessed-unit combat" loading="lazy" /></a>
+    -->
+    <div class="gallery-empty" style="aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;border-radius:8px;border:1px solid var(--border);background:repeating-linear-gradient(135deg,var(--surface) 0,var(--surface) 22px,var(--surface-2) 22px,var(--surface-2) 44px);">
+      <span class="ph-label" style="color:var(--muted);text-align:center;padding:1rem;line-height:1.5;">&#9654;&nbsp; <strong style="color:var(--accent);font-weight:600;">Screenshots coming</strong><br />hand-picked WarCritters shots land here</span>
+    </div>
+  </div>
 </section>
 
 <!-- ABOUT STAGE (reuses the arena footage) -->
