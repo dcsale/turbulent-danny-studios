@@ -599,6 +599,20 @@ html { overflow-x: clip; }
   margin: 0 0 0.5rem;
 }
 
+/* prominent full-width gallery band (placed right after the hero) */
+.gallery-band {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 2.6rem 0 2.2rem;
+}
+.gallery-band .gallery-head {
+  max-width: 800px;
+  margin: 0 auto 0.6rem;
+  padding: 0 1.5rem;
+}
+.gallery-band .gallery-head h2 { margin: 0 0 0.3rem; }
+.gallery-band .hscroll { padding: 0.25rem 1.5rem 0.5rem; }
+
 @media (max-width: 600px) {
   .stage { min-height: clamp(440px, 78vh, 680px); padding: 3rem 1rem; }
   .stage.hero-stage { min-height: 88vh; }
