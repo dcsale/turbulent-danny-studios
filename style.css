@@ -488,6 +488,14 @@ html { overflow-x: clip; }
   margin: 0 auto 1rem;
   border-radius: 8px;
 }
+.stage-content h1.wordmark { margin: 0 0 0.7rem; padding: 0; border: none; }
+.stage-content h1.wordmark img {
+  display: block;
+  margin: 0 auto;
+  max-width: min(540px, 90%);
+  height: auto;
+  filter: drop-shadow(0 4px 22px rgba(0, 0, 0, 0.55));
+}
 .stage-content section { margin: 1.6rem 0; border: none; padding: 0; }
 .stage-content section:first-child { margin-top: 0; }
 
