@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="An animal battle simulator built in Bevy/Rust. Coming soon to Steam." />
   <meta name="twitter:image" content="https://turbulentdannystudios.com/images/logo/coblade-logo.png" />
 
-  <link rel="stylesheet" href="/style.css?v=3" />
+  <link rel="stylesheet" href="/style.css?v=7" />
 </head>
 <body>
 
@@ -43,7 +43,7 @@
        - F10 hides only the bottom-right controller readout, not overlays in general;
        - F3 starts OFF and SHOWS physics wires, so leave it alone;
        - the CONTROLS legend hides itself while you possess a unit. -->
-<section class="stage hero-stage"
+<section class="stage hero-stage fit-portrait"
          data-clips="/images/gifs/warcritters-draft-fight.webm|/images/gifs/warcritters-dunes.webm|/images/gifs/warcritters-armory.webm"
          data-captions="Draft an army &middot; watch it fight|Command from the RTS view &middot; Dunes arena|The Armory &middot; third and first person">
   <div class="stage-content">
@@ -62,7 +62,7 @@
 <section class="gallery-band">
   <div class="gallery-head">
     <h2>Screenshots</h2>
-    <p class="hscroll-hint">From in-development builds, debug overlays and all &mdash; scroll sideways for more &rarr;</p>
+    <p class="hscroll-hint">From in-development builds, debug overlays and all. Tap a shot to open it full size and pinch to zoom &mdash; scroll sideways for more &rarr;</p>
   </div>
   <div class="hscroll">
     <figure class="shot">
@@ -112,8 +112,10 @@
   </div>
 </section>
 
-<!-- ABOUT STAGE (rotates the same clips as the hero, starting on a different one) -->
-<section class="stage"
+<!-- ABOUT STAGE (rotates the same clips as the hero, starting on a different one).
+     .fit-portrait: on a phone held upright, show the whole clip above the text
+     instead of cropping it to fill the screen (style.css). -->
+<section class="stage fit-portrait"
          data-clips="/images/gifs/warcritters-dunes.webm|/images/gifs/warcritters-armory.webm|/images/gifs/warcritters-draft-fight.webm"
          data-captions="Command from the RTS view &middot; Dunes arena|The Armory &middot; third and first person|Draft an army &middot; watch it fight">
   <div class="stage-content">
@@ -144,7 +146,7 @@
 <div class="content-col">
   <section>
     <h2>Gameplay footage</h2>
-    <p>Unedited captures from in-development builds, played back at the speed the game ran. The panels in the corners are developer tools, not part of the game's interface.</p>
+    <p>Unedited captures from in-development builds, played back at the speed the game ran. The panels in the corners are developer tools, not part of the game's interface. Use the full-screen button on any clip to see it big; on a phone, turn it sideways.</p>
     <p><strong>A whole match, start to finish &mdash;</strong> both armies line up in Battle Setup, charge across the Classic arena, meet in the middle and fight it out until one side wins.</p>
   </section>
 </div>
@@ -214,7 +216,8 @@
   <p>&copy; D.C. Sale &mdash; <a href="/">Turbulent Danny Studios LLC</a></p>
 </footer>
 
-<script src="/clips.js?v=2" defer></script>
+<script src="/clips.js?v=3" defer></script>
+<script src="/media-zoom.js?v=4" defer></script>
 
 </body>
 </html>

@@ -767,3 +767,105 @@ html { overflow-x: clip; }
   .hero-bg { padding: 4.5rem 1.2rem 3rem; }
   .media-strip { height: clamp(150px, 28vh, 240px); }
 }
+
+/* ============================================================
+   Portrait screens: show the whole clip instead of cropping it.
+   Opt-in: add .fit-portrait to a .stage.
+   A stage fills its box with object-fit: cover, which on a phone
+   held upright shows only ~30% of a 16:9 frame. In portrait the
+   media moves into a full-width 16:9 band at the top and the text
+   panel flows underneath it, so the clip can use `contain`.
+   Kept at the end of the file so it wins over the 600px rules.
+   ============================================================ */
+@media (orientation: portrait) {
+  .stage.fit-portrait,
+  .stage.hero-stage.fit-portrait {
+    display: block;
+    min-height: 0;
+    padding: 56.25vw 0 0;
+    background: #000;
+  }
+  .stage.fit-portrait .clip-layer,
+  .stage.fit-portrait > video.stage-media,
+  .stage.fit-portrait > img.stage-media {
+    inset: 0 0 auto 0;
+    height: 56.25vw;
+    object-fit: contain;
+  }
+  .stage.fit-portrait::after { display: none; }   /* no text sits on the video any more */
+  .stage.fit-portrait .stage-content {
+    max-width: none;
+    margin: 0;
+    border: 0;
+    border-top: 1px solid var(--border);
+    border-radius: 0;
+    background: var(--surface);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    box-shadow: none;
+    /* full-width panel, but text keeps the ~720px measure it had on the video:
+       on a large upright tablet or a tall desktop window, max-width:none alone
+       gave ~130-character lines */
+    padding: 1.6rem max(1.25rem, calc((100% - 720px) / 2)) 1.8rem;
+  }
+  /* Caption and nav hang from the band's bottom edge (translateY(-100%)), so a
+     caption that wraps onto two lines on a 320px phone grows upward over the
+     video instead of spilling into the text panel below. */
+  .stage.fit-portrait > .strip-caption {
+    top: calc(56.25vw - 0.5rem);
+    bottom: auto;
+    transform: translateY(-100%);
+    left: 0.6rem;
+    max-width: calc(100% - 9.5rem);
+    font-size: 0.75rem;
+  }
+  .stage.fit-portrait .clip-nav {
+    top: calc(56.25vw - 0.5rem);
+    bottom: auto;
+    transform: translateY(-100%);
+    right: 0.6rem;
+  }
+}
+
+/* ---- Full-screen button on page videos (media-zoom.js) ---- */
+.zoom-btn {
+  position: absolute;
+  z-index: 3;
+  top: 0.7rem;
+  right: 0.7rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #d6e2ee;
+  background: rgba(14, 17, 22, 0.74);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+}
+.zoom-btn:hover,
+.zoom-btn:focus-visible { color: #fff; background: rgba(40, 48, 60, 0.92); }
+.zoom-btn svg { width: 1.05rem; height: 1.05rem; }
+
+/* The copy media-zoom.js plays full screen: invisible until the browser makes it
+   full screen (the UA's own !important full-screen sizing then takes over). */
+.zoom-clone {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Full screen always shows the whole frame, even for layers styled `cover`, and
+   takes taps again: the hidden copy is pointer-events:none until then, and in
+   full screen that would let taps fall through to page links underneath and
+   make the video's own controls unusable.
+   Separate rules: one unknown pseudo-class would void a combined selector. */
+video:fullscreen { object-fit: contain !important; opacity: 1 !important; pointer-events: auto !important; }
+video:-webkit-full-screen { object-fit: contain !important; opacity: 1 !important; pointer-events: auto !important; }

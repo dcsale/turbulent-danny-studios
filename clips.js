@@ -70,6 +70,10 @@
       if (transitioning || target === idx) return;
       transitioning = true;
       var begin = function () {
+        // media-zoom.js marks a box while one of its clips is full screen. Don't
+        // crossfade, and 650 ms later reload, the layer that is on screen; the
+        // playlist picks up again from the showing clip once full screen closes.
+        if ('zoomed' in strip.dataset) { transitioning = false; return; }
         nxt.currentTime = 0;
         nxt.play().catch(function () {});
         nxt.classList.add('show');
