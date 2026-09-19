@@ -1,0 +1,7 @@
+# GitHub Pages builds this site with Jekyll. The only setting here keeps the
+# repo's internal notes off the published site: without it, images/gifs/README.md
+# was rendered as a public page at /images/gifs/ and both READMEs were also
+# served raw. The files stay in the repo; they are just not published.
+exclude:
+  - README.md
+  - images/gifs/README.md
