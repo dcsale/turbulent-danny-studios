@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="An animal battle simulator built in Bevy/Rust. Coming soon to Steam." />
   <meta name="twitter:image" content="https://turbulentdannystudios.com/images/logo/coblade-logo.png" />
 
-  <link rel="stylesheet" href="/style.css?v=2" />
+  <link rel="stylesheet" href="/style.css?v=3" />
 </head>
 <body>
 
@@ -35,17 +35,17 @@
   </ul>
 </nav>
 
-<!-- HERO STAGE: a WarCritters capture plays full-field behind the title.
-     STUB — warcritters-arena.webm is an early, debug-heavy clip. To upgrade:
-       (a) drop in a CLEAN capture (debug HUD off: F3 hides physics wires, F10 hides
-           overlays) named /images/gifs/warcritters-hero.webm and point the <video> at it; OR
-       (b) rotate several clean clips like the Rad Winds hero — delete the <video> line,
-           add these two attributes to the <section> tag, and list your clips + captions:
-             data-clips="/images/gifs/warcritters-hero.webm|/images/gifs/warcritters-battle.webm|/images/gifs/warcritters-possess.webm"
-             data-captions="Draft an army &middot; watch it fight|Command from the RTS view|Possess any critter"
-           (clips.js is already loaded at the bottom of this page; see games/rad-winds/index.html) -->
-<section class="stage hero-stage">
-  <video class="stage-media" src="/images/gifs/warcritters-arena.webm" autoplay muted loop playsinline preload="auto"></video>
+<!-- HERO STAGE: three in-engine clips rotate behind the title (clips.js), cut from
+     Danny's hand-picked reels at the speed the game ran (~22-24 fps capture).
+     They still carry the dev build's debug overlays. For clean replacements, note that:
+       - the World Inspector panel has NO keybind; it ships with the default `dev`
+         feature, so it needs a build without it (or drag/collapse it by mouse);
+       - F10 hides only the bottom-right controller readout, not overlays in general;
+       - F3 starts OFF and SHOWS physics wires, so leave it alone;
+       - the CONTROLS legend hides itself while you possess a unit. -->
+<section class="stage hero-stage"
+         data-clips="/images/gifs/warcritters-draft-fight.webm|/images/gifs/warcritters-dunes.webm|/images/gifs/warcritters-armory.webm"
+         data-captions="Draft an army &middot; watch it fight|Command from the RTS view &middot; Dunes arena|The Armory &middot; third and first person">
   <div class="stage-content">
     <h1>WarCritters <span class="status-pill dev">Coming soon to Steam</span></h1>
     <p class="tagline">An animal battle simulator &mdash; coming soon to Steam</p>
@@ -53,33 +53,69 @@
       <a href="#" onclick="return false;">Wishlist on Steam (coming soon)</a>
     </div>
   </div>
-  <span class="strip-caption">WarCritters &middot; early in-engine capture (rough)</span>
+  <span class="strip-caption">Draft an army &middot; watch it fight</span>
 </section>
 
-<!-- SCREENSHOTS GALLERY — mirrors the Rad Winds page (games/rad-winds/index.html).
-     TO POPULATE: web-size Danny's hand-picked shots to ~1500px wide JPEG (quality ~82),
-     save them into /images/screenshots/wc/, then add one <a><img></a> line per shot inside
-     .hscroll below (see the commented template) and delete the .gallery-empty tile. -->
+<!-- SCREENSHOTS GALLERY — mirrors the Rad Winds page (games/rad-winds/index.html), plus a
+     caption under each shot. Danny's 11 hand-picks, in his order, web-sized to 1500px JPEG q82.
+     Every caption was fact-checked against its image; keep them to what is actually visible. -->
 <section class="gallery-band">
   <div class="gallery-head">
     <h2>Screenshots</h2>
-    <p class="hscroll-hint">Straight from the in-engine playtests &mdash; scroll sideways for more &rarr;</p>
+    <p class="hscroll-hint">From in-development builds, debug overlays and all &mdash; scroll sideways for more &rarr;</p>
   </div>
   <div class="hscroll">
-    <!-- DROP SHOTS HERE — one line per screenshot, alt text describes the shot:
-    <a href="/images/screenshots/wc/g2-0000000000-0000.jpg"><img src="/images/screenshots/wc/g2-0000000000-0000.jpg" alt="WarCritters — army draft" loading="lazy" /></a>
-    <a href="/images/screenshots/wc/g2-0000000000-0001.jpg"><img src="/images/screenshots/wc/g2-0000000000-0001.jpg" alt="WarCritters — RTS command view" loading="lazy" /></a>
-    <a href="/images/screenshots/wc/g2-0000000000-0002.jpg"><img src="/images/screenshots/wc/g2-0000000000-0002.jpg" alt="WarCritters — possessed-unit combat" loading="lazy" /></a>
-    -->
-    <div class="gallery-empty" style="aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;border-radius:8px;border:1px solid var(--border);background:repeating-linear-gradient(135deg,var(--surface) 0,var(--surface) 22px,var(--surface-2) 22px,var(--surface-2) 44px);">
-      <span class="ph-label" style="color:var(--muted);text-align:center;padding:1rem;line-height:1.5;">&#9654;&nbsp; <strong style="color:var(--accent);font-weight:600;">Screenshots coming</strong><br />hand-picked WarCritters shots land here</span>
-    </div>
+    <figure class="shot">
+      <a href="/images/screenshots/wc/wc-1787611886-0000.jpg"><img src="/images/screenshots/wc/wc-1787611886-0000.jpg" alt="Red and blue armies in a mass melee on the Dunes arena among sandbags and barrels" loading="lazy" /></a>
+      <figcaption><strong>Mass melee on the Dunes</strong>Two armies collide in the middle of the Dunes arena, fighting around sandbags, barrels, crates and rock outcrops. The arcs over each unit are its health gauge: orange for red, blue for blue.</figcaption>
+    </figure>
+    <figure class="shot">
+      <a href="/images/screenshots/wc/g2-1785785628-0000.jpg"><img src="/images/screenshots/wc/g2-1785785628-0000.jpg" alt="First-person view down an assault rifle over the Dunes, with a stag, geese and a penguin on the dunes" loading="lazy" /></a>
+      <figcaption><strong>Possess a critter</strong>Drop into a unit and play in first person. Here an assault rifle looks out over the Dunes at a stag, geese, a penguin and more.</figcaption>
+    </figure>
+    <figure class="shot">
+      <a href="/images/screenshots/wc/g2-1786310296-0003.jpg"><img src="/images/screenshots/wc/g2-1786310296-0003.jpg" alt="Battle Setup screen over the Meadow arena, with species cards priced in gold and a row each of buildings and mid-field items" loading="lazy" /></a>
+      <figcaption><strong>Draft your army</strong>In Battle Setup each side drafts species, buildings for its own half and items for mid-field, all priced in gold. This draft is over the Meadow arena.</figcaption>
+    </figure>
+    <figure class="shot">
+      <a href="/images/screenshots/wc/g2-1786383162-0003.jpg"><img src="/images/screenshots/wc/g2-1786383162-0003.jpg" alt="Battle Setup over the Classic arena, red units on the left and blue polar bears and anacondas on the right" loading="lazy" /></a>
+      <figcaption><strong>Setting the field</strong>Both armies line up on the Classic arena before the fight, red on the left and blue's polar bears and anacondas on the right. Power-ups such as Haste, Growth, Shrink and Rage can be placed mid-field.</figcaption>
+    </figure>
+    <figure class="shot">
+      <a href="/images/screenshots/wc/g2-1786968345-0000.jpg"><img src="/images/screenshots/wc/g2-1786968345-0000.jpg" alt="Debug view of the Dunes arena showing navigation-mesh tile outlines and yellow lines from the red army to blue targets, score 0-0" loading="lazy" /></a>
+      <figcaption><strong>Behind the scenes: pathfinding</strong>A debug view of the Dunes arena with the score at 0-0. The outlined tiles are the navigation mesh, and each yellow line runs from a red critter to its target on the blue side.</figcaption>
+    </figure>
+    <figure class="shot">
+      <a href="/images/screenshots/wc/g2-1786968353-0002.jpg"><img src="/images/screenshots/wc/g2-1786968353-0002.jpg" alt="Debug view of a skirmish in a dune hollow with yellow target lines and wireframe marker spheres drawn over the units" loading="lazy" /></a>
+      <figcaption><strong>Pathfinding under fire</strong>The pathfinding debug view mid-skirmish, as red and blue meet in a dune hollow with target lines and marker spheres drawn over the fight.</figcaption>
+    </figure>
+    <figure class="shot">
+      <a href="/images/screenshots/wc/wc-1787141767-0007.jpg"><img src="/images/screenshots/wc/wc-1787141767-0007.jpg" alt="Third-person mannequin avatar walking toward knights and cattle on the Armory firing range, ten-slot weapon hotbar below" loading="lazy" /></a>
+      <figcaption><strong>The Armory</strong>The Armory firing range in third person. Your avatar walks toward armoured knights and cattle, with all ten weapons in the hotbar below.</figcaption>
+    </figure>
+    <figure class="shot">
+      <a href="/images/screenshots/wc/wc-1787154433-0001.jpg"><img src="/images/screenshots/wc/wc-1787154433-0001.jpg" alt="Avatar sprinting with an assault rifle across the Armory range past knights, cattle and rabbits" loading="lazy" /></a>
+      <figcaption><strong>Sprinting the range</strong>Running the Armory with the assault rifle. Knights, cattle and rabbits stand in as targets, and spare weapons lie on the ground to pick up.</figcaption>
+    </figure>
+    <figure class="shot">
+      <a href="/images/screenshots/wc/wc-1787146678-0007.jpg"><img src="/images/screenshots/wc/wc-1787146678-0007.jpg" alt="Third-person view behind a pink fish with a rifle, facing polar bears, knights, ninjas, a Mosasaurus and a Spinosaurus on a flat arena" loading="lazy" /></a>
+      <figcaption><strong>A fish with a rifle</strong>Third person behind a pink fish armed with an assault rifle, facing a blue team of polar bears, knights, ninjas, a Mosasaurus and a Spinosaurus.</figcaption>
+    </figure>
+    <figure class="shot">
+      <a href="/images/screenshots/wc/g2-1786966038-0003.jpg"><img src="/images/screenshots/wc/g2-1786966038-0003.jpg" alt="Debug view of a battle on the Classic arena with navigation-mesh tiles, target lines and floating health gauges, plus developer panels" loading="lazy" /></a>
+      <figcaption><strong>Reading the AI</strong>A pathfinding debug view of a battle on the Classic arena: navigation-mesh tiles plus the target and waypoint lines the critters are following.</figcaption>
+    </figure>
+    <figure class="shot">
+      <a href="/images/screenshots/wc/wc-1787141764-0006.jpg"><img src="/images/screenshots/wc/wc-1787141764-0006.jpg" alt="Blue mannequin crouched with a rifle in the Armory near antlered deer, power-up orbs and a row of floating weapons" loading="lazy" /></a>
+      <figcaption><strong>Crouched on the range</strong>Crouched with a rifle in the Armory beside a group of antlered deer and power-up orbs, with spare weapons floating in a row at the edge of the range.</figcaption>
+    </figure>
   </div>
 </section>
 
-<!-- ABOUT STAGE (reuses the arena footage) -->
-<section class="stage">
-  <video class="stage-media" src="/images/gifs/warcritters-arena.webm" autoplay muted loop playsinline preload="auto"></video>
+<!-- ABOUT STAGE (rotates the same clips as the hero, starting on a different one) -->
+<section class="stage"
+         data-clips="/images/gifs/warcritters-dunes.webm|/images/gifs/warcritters-armory.webm|/images/gifs/warcritters-draft-fight.webm"
+         data-captions="Command from the RTS view &middot; Dunes arena|The Armory &middot; third and first person|Draft an army &middot; watch it fight">
   <div class="stage-content">
     <h2>About</h2>
     <p>WarCritters is an animal battle simulator built in Bevy/Rust. Draft two armies from a roster of dozens of species, set them loose in an arena, and watch the fight play out &mdash; or drop into any critter on your side and fight alongside it in first or third person.</p>
@@ -102,9 +138,42 @@
 
 </div>
 
-<!-- CAPTURE SLOT — a second angle (roster / commander view). Drop a clip/shot here. -->
-<div class="media-strip full-bleed placeholder">
-  <span class="ph-label">&#9654;&nbsp; <strong>Roster &amp; commander view</strong><br />F12 / F11 slot &mdash; drop an army-draft or RTS-command capture here</span>
+<!-- GAMEPLAY FOOTAGE — three clips cut from Danny's hand-picked reels, shown full-frame like the
+     Rad Winds Energy Ships. Each plays at the rate it was captured (21.8-24.2 fps), so the
+     footage runs at the speed the game ran. Captions fact-checked against storyboards. -->
+<div class="content-col">
+  <section>
+    <h2>Gameplay footage</h2>
+    <p>Unedited captures from in-development builds, played back at the speed the game ran. The panels in the corners are developer tools, not part of the game's interface.</p>
+    <p><strong>A whole match, start to finish &mdash;</strong> both armies line up in Battle Setup, charge across the Classic arena, meet in the middle and fight it out until one side wins.</p>
+  </section>
+</div>
+
+<div class="full-bleed showcase">
+  <video src="/images/gifs/warcritters-match.webm" autoplay muted loop playsinline preload="auto"></video>
+  <span class="strip-caption">A whole match &middot; setup, charge, clash, result</span>
+</div>
+
+<div class="content-col">
+  <section>
+    <p><strong>Commander view on the Dunes &mdash;</strong> the RTS camera over the Dunes arena as the blue army pushes across the sand and red's numbers thin out.</p>
+  </section>
+</div>
+
+<div class="full-bleed showcase">
+  <video src="/images/gifs/warcritters-dunes.webm" autoplay muted loop playsinline preload="auto"></video>
+  <span class="strip-caption">Commander view &middot; Dunes arena</span>
+</div>
+
+<div class="content-col">
+  <section>
+    <p><strong>The Armory &mdash;</strong> run the firing range in third person, then switch to first person, rifle at the hip, facing the knights and cattle that stand in as targets.</p>
+  </section>
+</div>
+
+<div class="full-bleed showcase">
+  <video src="/images/gifs/warcritters-armory.webm" autoplay muted loop playsinline preload="auto"></video>
+  <span class="strip-caption">The Armory &middot; third and first person</span>
 </div>
 
 <div class="content-col">

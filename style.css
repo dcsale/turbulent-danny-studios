@@ -613,6 +613,22 @@ html { overflow-x: clip; }
 .gallery-band .gallery-head h2 { margin: 0 0 0.3rem; }
 .gallery-band .hscroll { padding: 0.25rem 1.5rem 0.5rem; }
 
+/* captioned screenshot tiles: <figure class="shot"><a><img></a><figcaption> */
+.hscroll figure.shot { margin: 0; }
+.hscroll figure.shot figcaption {
+  margin-top: 0.6rem;
+  padding: 0 0.2rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.hscroll figure.shot figcaption strong {
+  display: block;
+  color: var(--text);
+  font-weight: 600;
+  margin-bottom: 0.1rem;
+}
+
 @media (max-width: 600px) {
   .stage { min-height: clamp(440px, 78vh, 680px); padding: 3rem 1rem; }
   .stage.hero-stage { min-height: 88vh; }
