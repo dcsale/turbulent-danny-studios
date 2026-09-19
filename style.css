@@ -768,6 +768,11 @@ html { overflow-x: clip; }
   .media-strip { height: clamp(150px, 28vh, 240px); }
 }
 
+/* A wider frosted panel (games index). A class, not an inline style, so the
+   portrait rule below can override it: an inline max-width beat that rule and
+   squeezed the text column to nothing on tall desktop windows. */
+.stage-content.wide { max-width: 900px; }
+
 /* ============================================================
    Portrait screens: show the whole clip instead of cropping it.
    Opt-in: add .fit-portrait to a .stage.
@@ -795,7 +800,7 @@ html { overflow-x: clip; }
   .stage.fit-portrait::after { display: none; }   /* no text sits on the video any more */
   .stage.fit-portrait .stage-content {
     max-width: none;
-    margin: 0;
+    margin: 0 auto;              /* centres panels that set their own width inline */
     border: 0;
     border-top: 1px solid var(--border);
     border-radius: 0;
@@ -808,17 +813,19 @@ html { overflow-x: clip; }
        gave ~130-character lines */
     padding: 1.6rem max(1.25rem, calc((100% - 720px) / 2)) 1.8rem;
   }
-  /* Caption and nav hang from the band's bottom edge (translateY(-100%)), so a
-     caption that wraps onto two lines on a 320px phone grows upward over the
-     video instead of spilling into the text panel below. */
+  /* Caption at the band's top-left, where only the full-screen button shares the
+     edge; the playlist nav keeps the bottom-right. Pages rotate 3 or 4 clips and
+     the nav widens per dot, so a bottom caption sized for 3 dots overlapped a
+     4-dot nav. A caption that wraps grows downward over the video. */
   .stage.fit-portrait > .strip-caption {
-    top: calc(56.25vw - 0.5rem);
+    top: 0.6rem;
     bottom: auto;
-    transform: translateY(-100%);
+    transform: none;
     left: 0.6rem;
-    max-width: calc(100% - 9.5rem);
+    max-width: calc(100% - 4.2rem);
     font-size: 0.75rem;
   }
+  /* The nav hangs from the band's bottom edge (translateY(-100%)). */
   .stage.fit-portrait .clip-nav {
     top: calc(56.25vw - 0.5rem);
     bottom: auto;

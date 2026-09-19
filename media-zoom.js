@@ -31,7 +31,12 @@
    * A request can be refused or never settle: every path gives up and restores
      the page after 2 s if full screen has not actually started. A second press
      while one is open or pending is ignored, so Space/Enter on the hidden button
-     or a double-tap cannot tear the view down. */
+     or a double-tap cannot tear the view down.
+
+   * On iPhone the native player can hand off to Picture-in-Picture, which fires
+     no webkitendfullscreen. Presentation-mode changes are watched too, and each
+     press first clears any mark whose video is no longer full screen or in PiP,
+     so a missed exit event can never leave the page's buttons dead. */
 (function () {
   var ICON = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" ' +
              'stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
@@ -48,7 +53,7 @@
   }
 
   function markZoomed(box, on) {
-    if (on) box.dataset.zoomed = '';
+    if (on) box.dataset.zoomed = String(Date.now());   // clips.js only checks presence
     else delete box.dataset.zoomed;
   }
 
@@ -92,6 +97,7 @@
     c.playsInline = true; c.setAttribute('playsinline', '');
     c.loop = true;
     c.controls = true;           // pause/seek in full screen (Firefox needs the attribute)
+    c.disablePictureInPicture = true;   // the copy is removed when full screen ends, which would close PiP
     c.preload = 'auto';
     // Park the invisible copy over the clip it copies: Safari animates into and
     // out of full screen from the element's box.
@@ -166,7 +172,8 @@
       return;
     }
     setTimeout(function () {
-      if (!v.webkitDisplayingFullscreen) endNative(v, box);
+      var inPip = v.webkitPresentationMode && v.webkitPresentationMode !== 'inline';
+      if (!v.webkitDisplayingFullscreen && !inPip) endNative(v, box);
     }, GIVE_UP_MS);
   }
 
@@ -174,11 +181,40 @@
     if (v.dataset.zoomWatched) return;
     v.dataset.zoomWatched = '1';
     v.addEventListener('webkitendfullscreen', function () { endNative(v, box); });
+    // webkitendfullscreen does not fire when the player goes to Picture-in-Picture
+    // (its button, or swiping home with auto-PiP on), nor when PiP later closes.
+    // The presentation-mode event fires on every change; the clip is back on the
+    // page once the mode is 'inline'. While in PiP the box stays marked, so
+    // clips.js leaves the clip in the PiP window alone.
+    v.addEventListener('webkitpresentationmodechanged', function () {
+      if (v.webkitPresentationMode === 'inline') endNative(v, box);
+    });
+  }
+
+  // Backstop: if an exit event was missed, a stale mark would make busy() true for
+  // good and disable every button on the page. Clear marks whose video is no
+  // longer full screen or in PiP before deciding the page is busy.
+  function healStaleMarks() {
+    if (active) return;
+    document.querySelectorAll('[data-zoomed]').forEach(function (box) {
+      // A fresh mark may belong to a player that is still opening.
+      if (Date.now() - (parseInt(box.dataset.zoomed, 10) || 0) < GIVE_UP_MS) return;
+      var shown = false;
+      box.querySelectorAll('video').forEach(function (v) {
+        if (v.webkitDisplayingFullscreen ||
+            (v.webkitPresentationMode && v.webkitPresentationMode !== 'inline')) shown = true;
+      });
+      if (shown) return;
+      box.querySelectorAll('video').forEach(function (v) { restore(v); });
+      markZoomed(box, false);
+      resume(box);
+    });
   }
 
   // ---- button ---------------------------------------------------------------
 
   function enter(box) {
+    healStaleMarks();
     if (busy()) return;
     var v = currentVideo(box);
     if (!v) return;
